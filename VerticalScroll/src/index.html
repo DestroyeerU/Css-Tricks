@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VerticalScroll</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 360px;
+      height: 312px;
+      padding: 10px;
+
+      background: #fafafa;
+      overflow-y: auto;
+
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .list-item {
+      padding: 8px;
+      min-height: 41px;
+
+      color: #181414;
+
+      line-height: 25px;
+      font-size: 20px;
+      font-weight: 300;
+
+      transition: all 0.3s;
+    }
+
+    .item-active {
+      min-height: 50px;
+
+      line-height: 34px;
+      font-size: 27px;
+      font-weight: 500;
+    }
+
+    .list-item-empty {
+      min-height: 41px;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    25 + 16 = 41
+  -->
+
+  <div>
+    <ul class="list">
+      <li class="list-item-empty"></li>
+      <li class="list-item-empty"></li>
+      <li class="list-item-empty"></li>
+
+      <li class="list-item">Não Inviabilize</li>
+      <li class="list-item">Belela</li>
+      <li class="list-item">Juntos em Adoração</li>
+      <li class="list-item">A Malu tá ON</li>
+      <li class="list-item">Contos</li>
+      <li class="list-item">Podpah</li>
+      <li class="list-item">Isso Está Acontecendo</li>
+
+      <li class="list-item">Mano a Mano</li>
+      <li class="list-item">Histórias de Criança</li>
+      <li class="list-item">Músicas de Lutas</li>
+
+      <li class="list-item-empty"></li>
+      <li class="list-item-empty"></li>
+      <li class="list-item-empty"></li>
+    </ul>
+  </div>
+
+  <script>
+    const list = document.getElementsByClassName('list')[0]
+    list.scrollTop = 3 * 41
+
+    list.addEventListener("scroll", (event) => {
+      const value =  Math.round(event.target.scrollTop) / 41
+      const index = Math.round(value)
+
+      removeClassFromChildren(list, 'item-active')
+      list.children[index + 3].classList.add('item-active')
+    })
+
+    function removeClassFromChildren(element, className) {
+      for(const item of element.children) {
+        item.classList.remove(className)
+      }
+    }
+  </script>
+</body>
+</html>
