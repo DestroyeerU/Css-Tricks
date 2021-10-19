@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="areaFileSelector/areaFileSelector.css">
+  <link rel="stylesheet" href="animatedInput/animatedInput.css">
+  <title>Inputs</title>
+</head>
+<body>
+    <!-- Area image selector -->
+  <label class="custom-file-upload">
+    <input type="file" onchange="loadImagePreview()"/>
+
+    <div class="default">
+      <img src="assets/upload.svg" alt="upload">
+      Selecione sua foto
+    </div>
+
+    <img class="upload-preview" id="uploadPreview">
+  </label>
+
+  <div class="divider"></div>
+
+  <!-- Custom input -->
+
+  <div class="input-wrapper">
+    <input type="text" class="animated-input" required="required">
+    <span>Nome Completo</span>
+  </div>
+
+  <div class="input-wrapper" style="margin-top: 20px;">
+    <input type="text" class="animated-input" required="required">
+    <span>Nome Completo</span>
+  </div>
+
+  <script src="areaFileSelector/areaFileSelector.js"></script>
+</body>
+</html>

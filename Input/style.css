@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  box-sizing: border-box;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 50px;
+}
+
+.divider {
+  margin: 20px 0;
+}
+
+:root {
+  --dark: #222224;
+  --border: #DFE1E4;
+  --input-placeholder: #84839D;
+  --blue: #1a73e8;
+  --white: #fff;
+}
