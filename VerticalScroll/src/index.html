@@ -77,6 +77,17 @@
     .list-item-empty {
       min-height: 41px;
     }
+
+
+    /* Prevent Selection */
+    *.unselectable {
+      -moz-user-select: -moz-none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+
+      -ms-user-select: none;
+      user-select: none;
+    }
   </style>
 </head>
 <body>
@@ -87,25 +98,26 @@
 
   <div>
     <ul class="list">
-      <li class="list-item-empty"></li>
-      <li class="list-item-empty"></li>
-      <li class="list-item-empty"></li>
+      <li class="list-item-empty"><br></li>
+      <li class="list-item-empty"><br></li>
+      <li class="list-item-empty"><br></li>
 
-      <li data-index="0" class="list-item">Não Inviabilize</li>
-      <li data-index="1" class="list-item">Belela</li>
-      <li data-index="2" class="list-item">Juntos em Adoração</li>
-      <li data-index="3" class="list-item">A Malu tá ON</li>
-      <li data-index="4" class="list-item">Contos</li>
-      <li data-index="5" class="list-item">Podpah</li>
-      <li data-index="6" class="list-item">Isso Está Acontecendo</li>
+      <li data-index="0" class="list-item unselectable">Não Inviabilize</li>
+      <li data-index="1" class="list-item unselectable">Belela</li>
+      <li data-index="2" class="list-item unselectable">Juntos em Adoração</li>
+      <li data-index="3" class="list-item unselectable">A Malu tá ON</li>
+      <li data-index="4" class="list-item unselectable">Contos</li>
+      <li data-index="5" class="list-item unselectable">Podpah</li>
+      <li data-index="6" class="list-item unselectable">Isso Está Acontecendo</li>
 
-      <li data-index="7" class="list-item">Mano a Mano</li>
-      <li data-index="8" class="list-item">Histórias de Criança</li>
-      <li data-index="9" class="list-item">Músicas de Lutas</li>
+      <li data-index="7" class="list-item unselectable">Mano a Mano</li>
+      <li data-index="8" class="list-item unselectable">Histórias de Criança</li>
+      <li data-index="9" class="list-item unselectable">Músicas de Lutas</li>
 
-      <li class="list-item-empty"></li>
-      <li class="list-item-empty"></li>
-      <li class="list-item-empty"></li>
+      <li class="list-item-empty"><br></li>
+      <li class="list-item-empty"><br></li>
+      <li class="list-item-empty"><br></li>
+
     </ul>
   </div>
 
@@ -124,18 +136,18 @@
 
     //
 
-    function handleListItemClick(event, list) {
-      const index = Number(event.target.getAttribute('data-index'))
-
-      list.scrollTo({ top: index * itemHeight, behavior: 'smooth' })
-    }
-
     function addClickListenerOnListItems(list) {
       const listItems = list.getElementsByClassName('list-item')
 
       for (const listItem of listItems) {
         listItem.addEventListener('click', () => handleListItemClick(event, list))
       }
+    }
+
+    function handleListItemClick(event, list) {
+      const index = Number(event.target.getAttribute('data-index'))
+
+      list.scrollTo({ top: index * itemHeight, behavior: 'smooth' })
     }
 
     function handleListScroll(event, list) {
