@@ -54,20 +54,21 @@
 
     .list-item {
       padding: 8px;
-      min-height: 41px;
+      /* min-height: 41px; does not work with breack lines */
 
       color: #181414;
 
       line-height: 25px;
       font-size: 20px;
       font-weight: 300;
+      text-align: center;
 
       cursor: pointer;
       transition: all 0.3s;
     }
 
     .item-active {
-      min-height: 50px;
+      /* min-height: 50px; does not work with breack lines*/
 
       line-height: 34px;
       font-size: 27px;
@@ -108,7 +109,7 @@
       <li data-index="3" class="list-item unselectable">A Malu tá ON</li>
       <li data-index="4" class="list-item unselectable">Contos</li>
       <li data-index="5" class="list-item unselectable">Podpah</li>
-      <li data-index="6" class="list-item unselectable">Isso Está Acontecendo</li>
+      <li data-index="6" class="list-item unselectable">Isso Está Acontecendo Agora</li>
 
       <li data-index="7" class="list-item unselectable">Mano a Mano</li>
       <li data-index="8" class="list-item unselectable">Histórias de Criança</li>
