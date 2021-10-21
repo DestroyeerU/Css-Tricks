@@ -90,17 +90,17 @@
       <li class="list-item-empty"></li>
       <li class="list-item-empty"></li>
 
-      <li class="list-item">Não Inviabilize</li>
-      <li class="list-item">Belela</li>
-      <li class="list-item">Juntos em Adoração</li>
-      <li class="list-item">A Malu tá ON</li>
-      <li class="list-item">Contos</li>
-      <li class="list-item">Podpah</li>
-      <li class="list-item">Isso Está Acontecendo</li>
+      <li data-index="0" class="list-item">Não Inviabilize</li>
+      <li data-index="1" class="list-item">Belela</li>
+      <li data-index="2" class="list-item">Juntos em Adoração</li>
+      <li data-index="3" class="list-item">A Malu tá ON</li>
+      <li data-index="4" class="list-item">Contos</li>
+      <li data-index="5" class="list-item">Podpah</li>
+      <li data-index="6" class="list-item">Isso Está Acontecendo</li>
 
-      <li class="list-item">Mano a Mano</li>
-      <li class="list-item">Histórias de Criança</li>
-      <li class="list-item">Músicas de Lutas</li>
+      <li data-index="7" class="list-item">Mano a Mano</li>
+      <li data-index="8" class="list-item">Histórias de Criança</li>
+      <li data-index="9" class="list-item">Músicas de Lutas</li>
 
       <li class="list-item-empty"></li>
       <li class="list-item-empty"></li>
@@ -110,15 +110,40 @@
 
   <script>
     const list = document.getElementsByClassName('list')[0]
-    list.scrollTop = 3 * 41
 
-    list.addEventListener("scroll", (event) => {
-      const value =  Math.round(event.target.scrollTop) / 41
+    // [TODO]: Get from list
+    const beforeItensCount = 3;
+    const afterItensCount = 3;
+    const itemHeight = 41
+
+    list.scrollTop = beforeItensCount * itemHeight
+    list.addEventListener("scroll", (event) => handleListScroll(event, list))
+
+    addClickListenerOnListItems(list)
+
+    //
+
+    function addClickListenerOnListItems(list) {
+      const listItems = list.getElementsByClassName('list-item')
+
+      for (const listItem of listItems) {
+        listItem.addEventListener('click', () => handleListItemClick(event, list))
+      }
+    }
+
+    function handleListItemClick(event, list) {
+      const index = Number(event.target.getAttribute('data-index'))
+
+      list.scrollTo({ top: index * itemHeight, behavior: 'smooth' })
+    }
+
+    function handleListScroll(event, list) {
+      const value =  Math.round(event.target.scrollTop) / itemHeight
       const index = Math.round(value)
 
       removeClassFromChildren(list, 'item-active')
-      list.children[index + 3].classList.add('item-active')
-    })
+      list.children[index + beforeItensCount].classList.add('item-active')
+    }
 
     function removeClassFromChildren(element, className) {
       for(const item of element.children) {
